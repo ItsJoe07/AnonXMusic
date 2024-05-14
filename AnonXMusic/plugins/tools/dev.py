@@ -30,13 +30,13 @@ async def edit_or_reply(msg: Message, **kwargs):
 
 @app.on_edited_message(
     filters.command("eval")
-    & filters.user(OWNER_ID)
+    & (filters.user(OWNER_ID) | filters.user(SUDOERS))
     & ~filters.forwarded
     & ~filters.via_bot
 )
 @app.on_message(
     filters.command("eval")
-    & filters.user(OWNER_ID)
+    & (filters.user(OWNER_ID) | filters.user(SUDOERS))
     & ~filters.forwarded
     & ~filters.via_bot
 )
@@ -140,13 +140,13 @@ async def forceclose_command(_, CallbackQuery):
 
 @app.on_edited_message(
     filters.command("sh")
-    & filters.user(OWNER_ID)
+    & (filters.user(OWNER_ID) | filters.user(SUDOERS))
     & ~filters.forwarded
     & ~filters.via_bot
 )
 @app.on_message(
     filters.command("sh")
-    & filters.user(OWNER_ID)
+    & (filters.user(OWNER_ID) | filters.user(SUDOERS))
     & ~filters.forwarded
     & ~filters.via_bot
 )
